@@ -65,13 +65,14 @@ if __name__ == "__main__" :
     args = pr.parse_args()
     pref = args.prefix
     pref1 = []
-    for word in pref:
-        new_word = ""
-        for i in word:
-            if i.isalpha(): 
-                new_word += i
-        if new_word != 0: 
-            pref1.append(new_word.lower())
+    if pref != None:
+        for word in pref:
+            new_word = ""
+            for i in word:
+                if i.isalpha(): 
+                    new_word += i
+            if new_word != 0: 
+                pref1.append(new_word.lower())
     with open("model.pkl", "rb") as f:
         md = pickle.load(f)
     md.generate(pref1, args.len)
